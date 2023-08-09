@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+    </h:head>
+
+    <h:body>
+        <h:form>
+            <p:growl>
+                <p:autoUpdate />
+            </p:growl>
+
+            <h:panelGrid columns="2" cellpadding="5">
+
+                <p:outputLabel for="gameID" value="Game Name: " />
+                <p:selectOneMenu id="gameID" value="#{charBean.checkboxBean.selectedGameID}" effect="fold" editable="true">
+                    <f:selectItems value="#{charBean.checkboxBean.listGame}" var="g" 
+                                   itemValue="#{g.game_id}"
+                                   itemLabel="#{g.game_name}" />
+                </p:selectOneMenu>
+
+                <p:outputLabel for="platform" value="Platform: " />
+                <p:selectOneMenu id="platform" value="#{charBean.checkboxBean.selectedPlatform}" effect="fold" editable="true">
+                    <f:selectItem itemLabel="Select One" itemValue="" />
+                    <f:selectItems value="#{charBean.checkboxBean.platforms}" />
+                </p:selectOneMenu>
+
+                <p:outputLabel for="country" value="Country:" />
+                <p:selectCheckboxMenu id="country" value="#{charBean.checkboxBean.selectedCountries}" label="Country" multiple="true"
+                                      filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
+
+                    <f:selectItems value="#{charBean.checkboxBean.countries}" />
+                </p:selectCheckboxMenu>
+
+                <p:outputLabel for="appVersion" value="AppVersion:" />
+                <p:selectCheckboxMenu id="appVersion" value="#{charBean.checkboxBean.selectedAppVersions}" label="appVersion" multiple="true"
+                                      filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
+
+                    <f:selectItems value="#{charBean.checkboxBean.appVersions}" />
+                </p:selectCheckboxMenu>
+
+                <p:outputLabel for="type" value="Type" />
+                <p:selectCheckboxMenu id="type" value="#{charBean.checkboxBean.selectedTypes}" label="type" multiple="true"
+                                      filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
+
+                    <f:selectItems value="#{charBean.checkboxBean.types}" />
+                </p:selectCheckboxMenu>
+
+                <p:outputLabel for="breakFilter" value="Breakby" />
+                <p:selectOneMenu id="breakFilter" value="#{charBean.checkboxBean.selectedBreakFilter}" effect="fold" editable="true">
+                    <f:selectItem itemLabel="Select One" itemValue="" />
+                    <f:selectItems value="#{charBean.checkboxBean.getAllBreak}" />
+                </p:selectOneMenu>
+
+            </h:panelGrid>
+
+            <p:commandButton value="Submit"  update="chart"
+                             actionListener="#{charBean.uploadDataShow}" 
+                             style="margin-top:10px;" >
+            </p:commandButton>
+            
+            <p:outputPanel id = "chart">
+                <p:barChart model="#{charBean.stackedBarModel}" style="width: 100%; height: 500px;"/> 
+            </p:outputPanel>
+        </h:form>
+        <h:form>
+        </h:form>
+    </h:body>
+</html>

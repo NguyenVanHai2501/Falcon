@@ -1,0 +1,6 @@
+com\mycompany\falcon\entity\Game.class
+com\mycompany\falcon\beans\CharBean.class
+com\mycompany\falcon\beans\CheckboxBean.class
+com\mycompany\falcon\entity\DataShow.class
+com\mycompany\falcon\connection\DBConnection.class
+com\mycompany\falcon\dao\DAO.class
